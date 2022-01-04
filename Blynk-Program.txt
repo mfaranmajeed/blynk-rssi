@@ -1,6 +1,6 @@
 /* LED Blinking */
 
-/* Program is written by Dr. Muhammad Faran Majeed (m.faran.majeed@ieee.org)*/
+/* Program is written by Dr. Muhammad Faran Majeed & Co (m.faran.majeed@ieee.org)*/
 
 #define BLYNK_PRINT Serial
 #include <ESP8266WiFi.h>
