@@ -1,6 +1,6 @@
 /* RSSI Program */
 
-/* Program is written by Dr. Muhammad Faran Majeed (m.faran.majeed@ieee.org)*/
+/* Program is written by Dr. Muhammad Faran Majeed & Co (m.faran.majeed@ieee.org)*/
 
 
 #include <ESP8266WiFi.h>
