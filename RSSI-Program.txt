@@ -1,0 +1,41 @@
+/* RSSI Program */
+
+/* Program is written by Dr. Muhammad Faran Majeed (m.faran.majeed@ieee.org)*/
+
+
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+#include <Wire.h>
+#define REST 1000    //Rest Between Inhalations.
+char auth[] = "9iw-eKnZ2QUXAact5CWlSbwIBfeL5HLX";
+WidgetLCD lcd(V9);
+int buzzer = 5 ;// connect the I/O pin on the buzzer to this
+ 
+long rssi;
+IPAddressip;
+void setup()
+{
+digitalWrite(13, HIGH); //GPIO13
+pinMode(13, OUTPUT);       // Pin connected to the Relay
+digitalWrite(5, HIGH); //GPIO5
+pinMode(buzzer, OUTPUT);       // Pin connected to the Buzzer
+Serial.begin(115200);
+Blynk.begin(auth, "Lo412_Unifi", "abc0165664134");
+lcd.clear();
+}
+// ------------------------ ( Void Loop  ) ------------------------------
+void loop()
+{
+Blynk.run();
+rssi=WiFi.RSSI();                                        // Functions to display RSSI and Ip address
+Serial.print(rssi);
+  String MyIp;
+MyIp =  "IP: " + String(WiFi.localIP()[0]) + "." + String(WiFi.localIP()[1]) + "." + String(WiFi.localIP()[2]) + "." + String(WiFi.localIP()[3]);
+  String MyWiFi;
+MyWiFi = "WiFi: " + String(WiFi.RSSI());
+  // lcd.clear();
+lcd.print(0 ,0, MyWiFi);                  // This fn displays the Wifi strength when a button is pressed from the Blynk App
+lcd.print(0 ,1, MyIp);
+//    delay(1000);
+  yield();
+}
